@@ -25,7 +25,7 @@ module.exports = {
 
         let count = await UserModel.countDocuments({ phone: newData.phone }).exec();
         if(count > 0){
-            return res.status(201).json(data);
+            return res.status(201).json(newData);
         }
 
         return res.status(200).json({ message: 'Invalid phone number' });
@@ -39,7 +39,7 @@ module.exports = {
             newData.phone = data.phone;
 
             let users = await UserModel.find().exec();
-            return res.status(201).json({users: users});
+            return res.status(201).json(users);
         } catch (error) {
             console.log(error);
         }
