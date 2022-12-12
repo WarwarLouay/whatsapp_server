@@ -6,6 +6,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 const UserRoute = require('./routes/UserRoute');
+const MessageRoute = require('./routes/MessageRoute');
 
 var server = http.createServer(app);
 var io = require('socket.io')(server, {
@@ -51,3 +52,4 @@ mongoose.connect('mongodb://localhost/whatsapp', {
 });
 
 app.use('/api/', UserRoute);
+app.use('/api/', MessageRoute);
